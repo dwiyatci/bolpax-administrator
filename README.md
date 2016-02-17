@@ -13,6 +13,7 @@ In the spirit of giving a little help to my friend
 I also consider it as a divine opportunity to finally get my hands dirty on the 
 React ecosystem.
 
+As The Beatles said:
 :notes:
 > Oh, I get by with a little help from my friends
 
