@@ -1,0 +1,34 @@
+[
+  {
+    "transactionId"             : "BLPX1",
+    "transactionDate"           : "2016-02-16T21:45:13.420Z",
+    "buyerTransactionHistory"   : "Initiate Payment",
+    "buyerTransactionStatus"    : "Payment Pending",
+    "merchantTransactionHistory": "-",
+    "merchantTransactionStatus" : "-"
+  },
+  {
+    "transactionId"             : "BLPX1",
+    "transactionDate"           : "2016-02-16T21:45:13.420Z",
+    "buyerTransactionHistory"   : "Payment received by system",
+    "buyerTransactionStatus"    : "Payment Complete",
+    "merchantTransactionHistory": "Payment from buyer received by system",
+    "merchantTransactionStatus" : "Payment On Hold"
+  },
+  {
+    "transactionId"             : "BLPX1",
+    "transactionDate"           : "2016-02-16T21:45:13.420Z",
+    "buyerTransactionHistory"   : "Item has been delivered by merchant",
+    "buyerTransactionStatus"    : "Waiting for Item",
+    "merchantTransactionHistory": "Waiting for buyer to receive the item",
+    "merchantTransactionStatus" : "Item Shipped"
+  },
+  {
+    "transactionId"             : "BLPX1",
+    "transactionDate"           : "2016-02-16T21:45:13.420Z",
+    "buyerTransactionHistory"   : "Due to some issue, this transaction has been authorized to be canceled",
+    "buyerTransactionStatus"    : "Payment Pending",
+    "merchantTransactionHistory": "Due to some issue, this transaction has been authorized to be canceled",
+    "merchantTransactionStatus" : "Transaction Canceled"
+  }
+]
