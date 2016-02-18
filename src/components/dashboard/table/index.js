@@ -3,8 +3,9 @@
  */
 
 import React from 'react';
-import { DATA_TYPE, TABLE_TYPE } from '../../constants';
-import { apiUrls, tableDescriptors } from '../../config';
+import { DATA_TYPE, TABLE_TYPE } from '../../../constants';
+import { apiUrls, tableDescriptors } from '../../../config';
+import { Toolbar } from './toolbar';
 
 const Table = React.createClass({
   loadDataFromServer() {
@@ -89,30 +90,6 @@ const Table = React.createClass({
   },
 });
 
-Table.Toolbar = ({ dataType, selectedTransactionId }) => {
-  const toolbarVisible = (dataType === DATA_TYPE.ISSUE);
-  const rowSelected    = !_.isEmpty(selectedTransactionId);
-
-  return (
-    <nav className="navbar table-toolbar" style={{display: toolbarVisible ? 'block' : 'none'}}>
-      <div className="pull-xs-right">
-        <button
-          className={'btn btn-primary ' + (rowSelected ? '' : 'disabled')}
-          type="button"
-        >
-          Refund authorization
-        </button>
-        <button
-          className={'btn btn-primary m-l-1 ' + (rowSelected ? '' : 'disabled')}
-          type="button"
-        >
-          Reply issue
-        </button>
-      </div>
-    </nav>
-  );
-};
-
 Table.Header = ({ text }) => (
   <th>{text}</th>
 );
@@ -138,5 +115,7 @@ Table.Row = ({ colKeys, data, isClickable, isSelected, onClick }) => {
     </tr>
   );
 };
+
+Table.Toolbar = Toolbar;
 
 export { Table as default, Table };

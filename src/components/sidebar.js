@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { NavLink } from './nav-link';
+import { NavLink } from './common/nav-link';
 
 const Sidebar = (props) => (
   <div className="col-sm-2 sidebar">

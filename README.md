@@ -58,7 +58,6 @@ Then, simply drop all files under `dist` directory to the production server.
 
 ## TODO
 - [ ] Authentication flow
-- [ ] *Refund* and *Reply* dialog component
 - [ ] Connect to backend
 
 ## Author

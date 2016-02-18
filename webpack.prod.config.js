@@ -43,10 +43,10 @@ module.exports = {
 
     new ExtractTextPlugin('[name].css'),
 
-    new webpack.ProvidePlugin({
-      jQuery: 'jquery',
-      $     : 'jquery',
-    }),
+    //new webpack.ProvidePlugin({
+    //  jQuery: 'jquery',
+    //  $     : 'jquery',
+    //}),
   ],
   module : {
     loaders: [

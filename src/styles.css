@@ -24,6 +24,10 @@ body {
     font-size:        small;
 }
 
+.main .modal {
+    font-size: medium;
+}
+
 .sidebar .nav-link,
 .table > tbody > tr.clickable {
     cursor: pointer;

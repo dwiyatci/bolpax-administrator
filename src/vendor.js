@@ -3,6 +3,6 @@
  */
 
 import 'bootstrap-css/bootstrap';
-import 'bootstrap-jquery-plugin/modal.js';
+import 'bootstrap-jquery-plugin/modal';
 import 'font-awesome-webpack';
 import 'lodash';
