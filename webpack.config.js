@@ -17,7 +17,7 @@ module.exports = {
       'bootstrap-css'          : 'bootstrap/dist/css',
       'bootstrap-jquery-plugin': 'bootstrap/dist/js/umd',
     },
-    extensions: ['', '.js', '.css', '.jsx', '.json'],
+    extensions: ['', '.js', '.css', '.json', '.jsx'],
   },
   entry    : {
     vendor: ['./src/vendor.js'],
@@ -63,6 +63,10 @@ module.exports = {
       {
         test  : /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'url?limit=10000&minetype=application/font-woff'
+      },
+      {
+        test  : /.(png|jpg)$/,
+        loader: 'url?limit=8192'
       },
       {
         test  : /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,

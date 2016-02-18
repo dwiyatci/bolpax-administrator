@@ -6,7 +6,7 @@ import React from 'react'
 import { Link } from 'react-router'
 
 const NavLink = (props) => (
-  <Link {...props} className="nav-link" activeClassName="active"/>
+  <Link {...props} className="nav-link" activeClassName="active" onlyActiveOnIndex />
 );
 
 export { NavLink as default, NavLink };

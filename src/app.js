@@ -6,19 +6,18 @@ import './styles';
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute, IndexRedirect } from 'react-router';
+
 import { DATA_TYPE } from './constants';
+import { auth } from './auth';
 
 import { BolpaxAdministrator } from './components/bolpax-administrator';
 import { Login } from './components/login';
-import { auth } from './auth';
 import { Dashboard } from './components/dashboard';
 import { MainContent } from './components/dashboard/main-content';
+import { C404 } from './components/C404';
 
 const { TRANSACTION, ISSUE } = DATA_TYPE;
-const [Transactions, Issues] = _.map([TRANSACTION, ISSUE],
-  dataType => () => <MainContent dataType={dataType} pollInterval={2000} />
-);
 
 function requireAuth(nextState, replace) {
   //if (!auth.isLoggedIn()) {
@@ -35,11 +34,11 @@ ReactDOM.render(
       <IndexRedirect to="/dashboard" />
       <Route path="/login" component={Login} />
       <Route path="/dashboard" component={Dashboard} onEnter={requireAuth}>
-        <IndexRedirect to="/dashboard/transactions" />
-        <Route path="/dashboard/transactions" component={Transactions} />
-        <Route path="/dashboard/issues" component={Issues} />
+        <IndexRoute component={() => <MainContent dataType={TRANSACTION} />} />
+        <Route path="issues" component={() => <MainContent dataType={ISSUE} />} />
       </Route>
     </Route>
+    <Route path="/*" component={C404} />
   </Router>,
   document.querySelector('#app')
 );

@@ -22,7 +22,7 @@ const MainContent = React.createClass({
 
   render() {
     const { props, state, handleSelectedTransactionIdChanged } = this;
-    const { dataType, pollInterval } = props;
+    const { dataType } = props;
     const { selectedTransactionId } = state;
 
     return (
@@ -36,13 +36,12 @@ const MainContent = React.createClass({
           tableType={TABLE_TYPE.MAIN}
           selectedTransactionId={selectedTransactionId}
           onSelectedTransactionIdChanged={handleSelectedTransactionIdChanged}
-          parent={this}
-          pollInterval={pollInterval}
+          parent={this} // Hack? ;-)
+          pollInterval={20000}
         />
         <DetailContent
           dataType={dataType}
           selectedTransactionId={selectedTransactionId}
-          pollInterval={pollInterval}
         />
       </div>
     );

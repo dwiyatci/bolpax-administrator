@@ -52,55 +52,59 @@ const Toolbar = React.createClass({
     const { dataType, selectedTransactionId } = props;
     const toolbarVisible = (dataType === DATA_TYPE.ISSUE);
     const rowSelected    = !_.isEmpty(selectedTransactionId);
+    let toolbarNode      = <div />;
+
+    if (toolbarVisible) {
+      toolbarNode = (
+        <div className="navbar table-toolbar">
+          <div className="pull-right">
+            <button
+              className={`btn btn-primary ${rowSelected ? '' : 'disabled'}`}
+              type="button"
+              data-toggle="modal"
+              data-target={rowSelected ? '#refund-modal' : ''}
+            >
+              Refund authorization
+            </button>
+            <Modal
+              id="refund-modal"
+              title="Refund authorization"
+              commandName="Refund"
+              onCommandOk={handleRefundAuthorize}
+              ref={c => this._refundModal = c}
+            >
+              {`Are you sure you want to refund transaction ${selectedTransactionId}?`}
+            </Modal>
+
+            <button
+              className={`btn btn-primary m-l-1 ${rowSelected ? '' : 'disabled'}`}
+              type="button"
+              data-toggle="modal"
+              data-target={rowSelected ? '#reply-modal' : ''}
+            >
+              Reply issue
+            </button>
+            <Modal
+              id="reply-modal"
+              title="Reply issue"
+              commandName="Send message"
+              onCommandOk={handleReplyIssue}
+              ref={c => this._replyModal = c}
+            >
+              <form>
+                <div className="form-group">
+                  <label htmlFor="message-text" className="form-control-label">Message:</label>
+                  <textarea className="form-control" id="message-text" rows="3"></textarea>
+                </div>
+              </form>
+            </Modal>
+          </div>
+        </div>
+      );
+    }
 
     return (
-      <nav
-        className="navbar table-toolbar"
-        style={{display: toolbarVisible ? 'block' : 'none'}}
-      >
-        <div className="pull-right">
-          <button
-            className={'btn btn-primary ' + (rowSelected ? '' : 'disabled')}
-            type="button"
-            data-toggle="modal"
-            data-target={rowSelected ? '#refund-modal' : ''}
-          >
-            Refund authorization
-          </button>
-          <Modal
-            id="refund-modal"
-            title="Refund authorization"
-            commandName="Refund"
-            onCommandOk={handleRefundAuthorize}
-            ref={c => this._refundModal = c}
-          >
-            {`Are you sure you want to refund transaction ${selectedTransactionId}?`}
-          </Modal>
-
-          <button
-            className={'btn btn-primary m-l-1 ' + (rowSelected ? '' : 'disabled')}
-            type="button"
-            data-toggle="modal"
-            data-target={rowSelected ? '#reply-modal' : ''}
-          >
-            Reply issue
-          </button>
-          <Modal
-            id="reply-modal"
-            title="Reply issue"
-            commandName="Send message"
-            onCommandOk={handleReplyIssue}
-            ref={c => this._replyModal = c}
-          >
-            <form>
-              <div className="form-group">
-                <label htmlFor="message-text" className="form-control-label">Message:</label>
-                <textarea className="form-control" id="message-text" rows="3"></textarea>
-              </div>
-            </form>
-          </Modal>
-        </div>
-      </nav>
+      toolbarNode
     );
   }
 });
