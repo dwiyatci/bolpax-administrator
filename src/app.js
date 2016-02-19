@@ -6,7 +6,8 @@ import './styles';
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory, IndexRoute, IndexRedirect } from 'react-router';
+import { Router, Route, IndexRoute, IndexRedirect, useRouterHistory } from 'react-router';
+import { createHashHistory } from 'history';
 
 import { DATA_TYPE } from './constants';
 import { auth } from './auth';
@@ -16,6 +17,8 @@ import { Login } from './components/login';
 import { Dashboard } from './components/dashboard';
 import { MainContent } from './components/dashboard/main-content';
 import { C404 } from './components/C404';
+
+const history = useRouterHistory(createHashHistory)({ queryKey: false });
 
 const { TRANSACTION, ISSUE } = DATA_TYPE;
 
@@ -29,11 +32,11 @@ function requireAuth(nextState, replace) {
 }
 
 ReactDOM.render(
-  <Router history={browserHistory}>
+  <Router history={history}>
     <Route path="/" component={BolpaxAdministrator}>
-      <IndexRedirect to="/dashboard" />
-      <Route path="/login" component={Login} />
-      <Route path="/dashboard" component={Dashboard} onEnter={requireAuth}>
+      <IndexRedirect to="dashboard" />
+      <Route path="login" component={Login} />
+      <Route path="dashboard" component={Dashboard} onEnter={requireAuth}>
         <IndexRoute component={() => <MainContent dataType={TRANSACTION} />} />
         <Route path="issues" component={() => <MainContent dataType={ISSUE} />} />
       </Route>

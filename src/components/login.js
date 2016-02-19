@@ -5,17 +5,23 @@
 import React from 'react';
 
 const Login = React.createClass({
+
+  // ask for `router` from context
+  contextTypes: {
+    router: React.PropTypes.object
+  },
+
   handleSubmit(e) {
     e.preventDefault();
 
     // Do dummy login.
-    window.location.pathname = '/dashboard';
+    this.context.router.push('/');
   },
 
   render() {
     return (
-      <div className="container">
-        <form className="pull-left m-t-2 form-signin" onSubmit={this.handleSubmit}>
+      <div className="pull-left m-t-2 container">
+        <form className="form-signin" onSubmit={this.handleSubmit}>
           <h2 className="form-signin-heading">Please sign in</h2>
           <label htmlFor="inputPhone" className="sr-only">Phone number</label>
           <input type="tel" id="inputPhone" className="form-control" placeholder="Phone number" required autoFocus />

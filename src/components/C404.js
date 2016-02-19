@@ -3,11 +3,12 @@
  */
 
 import React from 'react';
+import { Link } from 'react-router'
 
 const C404 = () => (
-    <a href="/dashboard" title="Back to Dashboard">
-      <img src={require('../img/ninja.png')} className="center-block" alt="Ninja 404" />
-    </a>
+  <Link to="/dashboard" title="Back to Dashboard">
+    <img src={require('../img/ninja.png')} className="center-block" alt="Ninja 404" />
+  </Link>
 );
 
 export { C404 as default, C404 };

@@ -9,7 +9,7 @@ const Sidebar = (props) => (
   <div className="col-sm-2 sidebar">
     <ul className="nav nav-pills nav-stacked">
       <li className="nav-item m-y-1 dashboard">
-        <NavLink to={"/dashboard"}>
+        <NavLink to="/dashboard">
           <i className="fa fa-home fa-lg fa-fw"></i> Dashboard
         </NavLink>
       </li>

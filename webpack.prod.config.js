@@ -26,7 +26,7 @@ module.exports = {
   output : {
     path      : path.join(__dirname, 'dist'),
     filename  : '[name].js',
-    publicPath: '/',
+    publicPath: '/bolpax-administrator/',
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
