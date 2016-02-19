@@ -41,7 +41,8 @@ As The Beatles said:
 
 * Checkout the repo, `cd` to project directory, and setup dependencies:
 ```bash
-$ npm run setup
+$ npm i rimraf updtr webpack webpack-dev-server -g
+$ npm run install:clean
 ```
 
 * For development, start Webpack development server with hot reloading capability:
