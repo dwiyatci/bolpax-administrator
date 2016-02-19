@@ -1,5 +1,6 @@
 # bolpax-administrator
 
+----
 *This repo is now deprecated in favour of [the corresponding IMWIZZ repo](https://github.com/imwizz/bolpax-dashboard).*
 ----
 
