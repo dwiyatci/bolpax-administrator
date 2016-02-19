@@ -1,8 +1,8 @@
 # bolpax-administrator
 
-----
 *This repo is now deprecated in favour of [the corresponding IMWIZZ repo](https://github.com/imwizz/bolpax-dashboard).*
-----
+
+---
 
 Bolpax administrator frontend web UI for 
 [Mandiri Hackathon](http://mandirihackathon.id) 2015-2016.
