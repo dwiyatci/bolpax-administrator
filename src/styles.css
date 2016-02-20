@@ -6,6 +6,12 @@ body {
     font-family: "Audiowide", cursive;
 }
 
+.banner-title,
+.sidebar .nav-link,
+.table > tbody > tr.clickable {
+    cursor: pointer;
+}
+
 .form-signin {
     width: 330px;
 }
@@ -26,9 +32,4 @@ body {
 
 .main .modal {
     font-size: medium;
-}
-
-.sidebar .nav-link,
-.table > tbody > tr.clickable {
-    cursor: pointer;
 }

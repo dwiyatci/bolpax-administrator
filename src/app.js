@@ -16,7 +16,7 @@ import { BolpaxAdministrator } from './components/bolpax-administrator';
 import { Login } from './components/login';
 import { Dashboard } from './components/dashboard';
 import { MainContent } from './components/dashboard/main-content';
-import { C404 } from './components/C404';
+import { C404 } from './components/c404';
 
 const history = useRouterHistory(createHashHistory)({ queryKey: false });
 

@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { TABLE_TYPE } from '../../constants';
+import { TABLE_TYPE, DATA_TYPE } from '../../constants';
 import { Table as MainTable } from './table';
 import { DetailContent } from './detail-content';
 
@@ -24,13 +24,27 @@ const MainContent = React.createClass({
     const { props, state, handleSelectedTransactionIdChanged } = this;
     const { dataType } = props;
     const { selectedTransactionId } = state;
+    let toolbarNode;
+    let detailContentNode;
+
+    if (dataType === DATA_TYPE.ISSUE) {
+      toolbarNode =
+        <MainTable.Toolbar
+          selectedTransactionId={selectedTransactionId}
+        />;
+    }
+
+    if (!_.isEmpty(selectedTransactionId)) {
+      detailContentNode =
+        <DetailContent
+          dataType={dataType}
+          selectedTransactionId={selectedTransactionId}
+        />;
+    }
 
     return (
       <div className="col-sm-10 col-sm-offset-2 main">
-        <MainTable.Toolbar
-          dataType={dataType}
-          selectedTransactionId={selectedTransactionId}
-        />
+        {toolbarNode}
         <MainTable
           dataType={dataType}
           tableType={TABLE_TYPE.MAIN}
@@ -39,10 +53,7 @@ const MainContent = React.createClass({
           parent={this} // Hack? ;-)
           pollInterval={20000}
         />
-        <DetailContent
-          dataType={dataType}
-          selectedTransactionId={selectedTransactionId}
-        />
+        {detailContentNode}
       </div>
     );
   },
