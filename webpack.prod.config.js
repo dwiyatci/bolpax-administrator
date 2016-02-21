@@ -17,10 +17,21 @@ module.exports = {
       'bootstrap-css'          : 'bootstrap/dist/css',
       'bootstrap-jquery-plugin': 'bootstrap/dist/js/umd',
     },
-    extensions: ['', '.js', '.css', '.json', '.jsx'],
+    extensions: ['', '.js', '.css', '.json'],
   },
   entry  : {
-    vendor: ['./src/vendor.js'],
+    vendor: [
+      'lodash',
+      'jquery',
+      'bootstrap-css/bootstrap',
+      'bootstrap-jquery-plugin/modal',
+      'font-awesome-webpack',
+      'react',
+      'react-dom',
+      'react-router',
+      'history',
+      'notifyjs-browser',
+    ],
     app   : ['./src/app.js'],
   },
   output : {
@@ -39,26 +50,32 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.tpl.html',
       filename: 'index.html',
+      favicon : './src/favicon.ico',
     }),
 
     new ExtractTextPlugin('[name].css'),
 
-    //new webpack.ProvidePlugin({
-    //  jQuery: 'jquery',
-    //  $     : 'jquery',
-    //}),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+    }),
   ],
   module : {
     loaders: [
       {
         test   : /\.js$/,
+        include: [
+          path.join(__dirname, 'src'),
+        ],
         loader : 'babel',
         query  : {
           presets: ['es2015', 'stage-2', 'react'],
         },
+      },
+      {
         include: [
-          path.join(__dirname, 'src'),
-        ]
+          path.join(__dirname, 'node_modules/bootstrap/dist/js/umd'),
+        ],
+        loader : 'imports?jQuery=jquery',
       },
       {
         test  : /\.css$/,
@@ -66,11 +83,11 @@ module.exports = {
       },
       {
         test  : /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url?limit=10000&minetype=application/font-woff'
+        loader: 'url?limit=10000&minetype=application/font-woff',
       },
       {
         test  : /.(png|jpg)$/,
-        loader: 'url?limit=8192'
+        loader: 'url?limit=8192',
       },
       {
         test  : /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -81,7 +98,7 @@ module.exports = {
         loader : 'json',
         include: [
           path.join(__dirname, 'src'),
-        ]
+        ],
       },
     ],
   },

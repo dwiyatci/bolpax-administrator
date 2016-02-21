@@ -50,7 +50,6 @@ const MainContent = React.createClass({
           tableType={TABLE_TYPE.MAIN}
           selectedTransactionId={selectedTransactionId}
           onSelectedTransactionIdChanged={handleSelectedTransactionIdChanged}
-          parent={this} // Hack? ;-)
           pollInterval={20000}
         />
         {detailContentNode}

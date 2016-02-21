@@ -8,6 +8,10 @@ import { apiUrls, tableDescriptors } from '../../../config';
 import { Toolbar } from './toolbar';
 
 const Table = React.createClass({
+  handleClick(transactionId) {
+    this.props.onSelectedTransactionIdChanged(transactionId);
+  },
+
   loadDataFromServer() {
     const { dataType, tableType, pollInterval } = this.props;
     let resourceName = dataType;
@@ -45,10 +49,8 @@ const Table = React.createClass({
   },
 
   render() {
-    const { props, state } = this;
-    const { dataType, tableType,
-            selectedTransactionId,
-            onSelectedTransactionIdChanged, parent } = props;
+    const { props, state, handleClick } = this;
+    const { dataType, tableType, selectedTransactionId } = props;
 
     const path = `${dataType}.${tableType}`.toLowerCase();
     const { headerTexts, orderedColKeys } = _.get(tableDescriptors, path);
@@ -71,7 +73,7 @@ const Table = React.createClass({
 
           const isClickable = (tableType === TABLE_TYPE.MAIN);
           const isSelected  = isClickable && (transactionId === selectedTransactionId);
-          const onClick     = isClickable ? onSelectedTransactionIdChanged : _.noop;
+          const onClick     = isClickable ? handleClick : _.noop;
 
           return (
             <Table.Row
@@ -80,7 +82,7 @@ const Table = React.createClass({
               data={data}
               isClickable={isClickable}
               isSelected={isSelected}
-              onClick={onClick.bind(parent, transactionId)}
+              onClick={onClick.bind(this, transactionId)}
             />
           );
         })}

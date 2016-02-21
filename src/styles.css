@@ -33,3 +33,7 @@ body {
 .main .modal {
     font-size: medium;
 }
+
+.notifyjs-corner {
+    line-height: normal;
+}

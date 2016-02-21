@@ -3,13 +3,13 @@
  */
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import $ from 'jquery';
 import { apiUrls } from '../../../config';
 import { Modal } from '../../common/modal';
 
 const Toolbar = React.createClass({
   handleRefundAuthorize() {
-    $(ReactDOM.findDOMNode(this._refundModal)).modal('hide');
+    this.refundModal_.hide();
 
     //$.ajax({
     //  url    : apiUrls.refundPayments.update,
@@ -17,17 +17,26 @@ const Toolbar = React.createClass({
     //  data   : {
     //    trxId : '',
     //    refund: '',
+    //    token : 'afds7f8dsf9s7d9fdcs',  // momentarily hardcoded
     //  },
     //  success: (data) => {
     //    console.log(data);
+    //    $.notify('Refund authorized', 'success');
+    //  },
+    //  error  : () => {
+    //    $.notify('Refund authorization failed', 'error');
     //  },
     //});
+
+    $.notify('Refund authorized', 'success');
+    //$.notify('Refund authorization failed', 'error');
   },
 
   handleReplyIssue() {
-    const message = $(ReactDOM.findDOMNode(this._replyModal))
-      .modal('hide')
-      .find('#message-text').val();
+    const { replyModal_, replyTextArea_ } = this;
+    const message = replyTextArea_.value;
+
+    replyModal_.hide();
 
     console.log(message);
 
@@ -42,8 +51,15 @@ const Toolbar = React.createClass({
     //  },
     //  success: (data) => {
     //    console.log(data);
+    //    $.notify('Message successfully sent', 'success');
     //  },
+    //  error: () => {
+    //    $.notify('Sending failed', 'error');
+    //  }
     //});
+
+    $.notify('Message successfully sent', 'success');
+    //$.notify('Sending failed', 'error');
   },
 
   render() {
@@ -67,7 +83,7 @@ const Toolbar = React.createClass({
             title="Refund authorization"
             commandName="Refund"
             onCommandOk={handleRefundAuthorize}
-            ref={c => this._refundModal = c}
+            ref={c => this.refundModal_ = c}
           >
             {`Are you sure you want to refund transaction ${selectedTransactionId}?`}
           </Modal>
@@ -85,12 +101,17 @@ const Toolbar = React.createClass({
             title="Reply issue"
             commandName="Send message"
             onCommandOk={handleReplyIssue}
-            ref={c => this._replyModal = c}
+            ref={c => this.replyModal_ = c}
           >
             <form>
               <div className="form-group">
                 <label htmlFor="message-text" className="form-control-label">Message:</label>
-                <textarea className="form-control" id="message-text" rows="3"></textarea>
+                <textarea
+                  className="form-control"
+                  id="message-text"
+                  rows="3"
+                  ref={c => this.replyTextArea_ = c}
+                />
               </div>
             </form>
           </Modal>

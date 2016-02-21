@@ -11,7 +11,7 @@ const Banner = React.createClass({
     router: React.PropTypes.object
   },
 
-  handleClick(e) {
+  handleClick() {
 
     // Back to Home.
     this.context.router.push('/');

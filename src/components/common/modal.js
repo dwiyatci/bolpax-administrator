@@ -3,13 +3,18 @@
  */
 
 import React from 'react';
+import $ from 'jquery';
 
 const Modal = React.createClass({
+  hide() {
+    $(this.modal_).modal('hide');
+  },
+
   render() {
     const { id, title, commandName, onCommandOk, children } = this.props;
 
     return (
-      <div className="modal fade" id={id} tabIndex="-1" role="dialog">
+      <div className="modal fade" id={id} tabIndex="-1" role="dialog" ref={c => this.modal_ = c}>
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
