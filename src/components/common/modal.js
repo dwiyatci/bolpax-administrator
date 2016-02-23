@@ -14,7 +14,7 @@ const Modal = React.createClass({
     const { id, title, commandName, onCommandOk, children } = this.props;
 
     return (
-      <div className="modal fade" id={id} tabIndex="-1" role="dialog" ref={c => this.modal_ = c}>
+      <div className="modal fade" id={id} tabIndex="-1" role="dialog" ref={el => this.modal_ = el}>
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
@@ -27,13 +27,12 @@ const Modal = React.createClass({
               {children}
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button
-                type="button"
-                className="btn btn-primary"
-                data-dismiss=""
-                onClick={onCommandOk}
-              >
+              <button type="button" className="btn btn-secondary"
+                      data-dismiss="modal">
+                Close
+              </button>
+              <button type="button" className="btn btn-primary"
+                      data-dismiss="" onClick={onCommandOk}>
                 {commandName}
               </button>
             </div>
@@ -41,7 +40,7 @@ const Modal = React.createClass({
         </div>
       </div>
     );
-  }
+  },
 });
 
 export { Modal as default, Modal };

@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 
 const C404 = () => (
   <Link to="/dashboard" title="Back to Dashboard">

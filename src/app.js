@@ -19,7 +19,6 @@ import { MainContent } from './components/dashboard/main-content';
 import { C404 } from './components/c404';
 
 const history = useRouterHistory(createHashHistory)({ queryKey: false });
-
 const { TRANSACTION, ISSUE } = DATA_TYPE;
 
 function requireAuth(nextState, replace) {

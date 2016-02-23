@@ -1,38 +1,14 @@
 [
   {
-    "transactionId": "BLPX4",
-    "issueDate"    : "2016-02-16T21:52:26.751Z",
-    "issueStatus"  : "Open",
-    "issueHistory" : "Barang tak kunjung datang selama seminggu lebih, lelah menunggu Abang delivery."
+    "date": "2016-02-09 08:13:57.0",
+    "status": "Open",
+    "history": "Kenapa sih barangnya ga masuk masuk? Padahal udah licin",
+    "fromAdmin": "N"
   },
   {
-    "transactionId": "BLPX4",
-    "issueDate"    : "2016-02-16T21:52:26.751Z",
-    "issueStatus"  : "Waiting On User",
-    "issueHistory" : "[Respond] Baik, Pak. Akan kami tinjau ke pihak logistik mengenai keberadaan barang Bapak."
-  },
-  {
-    "transactionId": "BLPX4",
-    "issueDate"    : "2016-02-16T21:52:26.751Z",
-    "issueStatus"  : "Waiting For Feedback",
-    "issueHistory" : "Om, barangnya ga dateng juga nih. Saya mau refund aja deh kalo gini."
-  },
-  {
-    "transactionId": "BLPX4",
-    "issueDate"    : "2016-02-16T21:52:26.751Z",
-    "issueStatus"  : "Refund",
-    "issueHistory" : "[Respond] Mohon maaf pak atas kesalahan teknis dalam pengiriman barang. Proses refund Bapak dapat dilakukan dengan melakukan tap pada button refund di atas."
-  },
-  {
-    "transactionId": "BLPX4",
-    "issueDate"    : "2016-02-16T21:52:26.751Z",
-    "issueStatus"  : "Resolved",
-    "issueHistory" : ""
-  },
-  {
-    "transactionId": "BLPX4",
-    "issueDate"    : "2016-02-16T21:52:26.751Z",
-    "issueStatus"  : "Closed",
-    "issueHistory" : ""
+    "date": "2016-02-09 08:14:38.0",
+    "status": "Waiting On User",
+    "history": "sabar mas ini baru mau dikeluarin",
+    "fromAdmin": "Y"
   }
 ]

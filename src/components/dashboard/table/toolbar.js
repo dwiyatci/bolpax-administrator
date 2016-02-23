@@ -5,67 +5,70 @@
 import React from 'react';
 import $ from 'jquery';
 import { apiUrls } from '../../../config';
+import { ISSUE_STATUS_IDS } from '../../../constants';
+import { spinner, logError } from '../../../util';
 import { Modal } from '../../common/modal';
 
 const Toolbar = React.createClass({
   handleRefundAuthorize() {
     this.refundModal_.hide();
 
-    //$.ajax({
-    //  url    : apiUrls.refundPayments.update,
-    //  type   : 'POST',
-    //  data   : {
-    //    trxId : '',
-    //    refund: '',
-    //    token : 'afds7f8dsf9s7d9fdcs',  // momentarily hardcoded
-    //  },
-    //  success: (data) => {
-    //    console.log(data);
-    //    $.notify('Refund authorized', 'success');
-    //  },
-    //  error  : () => {
-    //    $.notify('Refund authorization failed', 'error');
-    //  },
-    //});
+    $.ajax({
+      url       : apiUrls.refundPayments.update,
+      type      : 'POST',
+      beforeSend: () => spinner.spin(document.querySelector('.main')),
+      data      : {
+        issueId: this.props.selectedObject.issueId,
+      },
+      success   : (data) => {
+        console.log(data);
+        $.notify('Refund authorized', 'success');
+      },
 
-    $.notify('Refund authorized', 'success');
+      error   : (jqXHR, textStatus, errorThrown) =>
+        logError('Refund authorization failed', new Error(errorThrown)),
+      complete: () => spinner.stop(),
+    });
+
+    //$.notify('Refund authorized', 'success');
     //$.notify('Refund authorization failed', 'error');
   },
 
   handleReplyIssue() {
-    const { replyModal_, replyTextArea_ } = this;
+    const { props, replyModal_, replyTextArea_ } = this;
+    const { selectedObject } = props;
     const message = replyTextArea_.value;
 
     replyModal_.hide();
 
-    console.log(message);
+    //console.log(message);
+    $.ajax({
+      url       : apiUrls.replyIssues.update,
+      type      : 'POST',
+      beforeSend: () => spinner.spin(document.querySelector('.main')),
+      data      : {
+        fromAdmin    : 'Y',
+        message      : message,
+        issueId      : selectedObject.issueId,
+        issueStatusId: ISSUE_STATUS_IDS[selectedObject.lastStatus],
+      },
+      success   : (data) => {
+        console.log(data);
+        $.notify('Message successfully sent', 'success');
+      },
 
-    //$.ajax({
-    //  url    : apiUrls.replyIssues.update,
-    //  type   : 'POST',
-    //  data   : {
-    //    fromAdmin    : '',
-    //    message      : message,
-    //    issueId      : '',
-    //    issueStatusId: '',
-    //  },
-    //  success: (data) => {
-    //    console.log(data);
-    //    $.notify('Message successfully sent', 'success');
-    //  },
-    //  error: () => {
-    //    $.notify('Sending failed', 'error');
-    //  }
-    //});
+      error   : (jqXHR, textStatus, errorThrown) =>
+        logError('Sending message failed', new Error(errorThrown)),
+      complete: () => spinner.stop(),
+    });
 
-    $.notify('Message successfully sent', 'success');
+    //$.notify('Message successfully sent', 'success');
     //$.notify('Sending failed', 'error');
   },
 
   render() {
-    const { props, handleRefundAuthorize, handleReplyIssue } = this;
-    const { selectedTransactionId } = props;
-    const rowSelected = !_.isEmpty(selectedTransactionId);
+    const { selectedObject } = this.props;
+    const rowSelected = !_.isEmpty(selectedObject);
 
     return (
       <div className="navbar table-toolbar">
@@ -82,10 +85,10 @@ const Toolbar = React.createClass({
             id="refund-modal"
             title="Refund authorization"
             commandName="Refund"
-            onCommandOk={handleRefundAuthorize}
+            onCommandOk={this.handleRefundAuthorize}
             ref={c => this.refundModal_ = c}
           >
-            {`Are you sure you want to refund transaction ${selectedTransactionId}?`}
+            {`Are you sure you want to refund transaction #${selectedObject.trxId}?`}
           </Modal>
 
           <button
@@ -100,12 +103,14 @@ const Toolbar = React.createClass({
             id="reply-modal"
             title="Reply issue"
             commandName="Send message"
-            onCommandOk={handleReplyIssue}
+            onCommandOk={this.handleReplyIssue}
             ref={c => this.replyModal_ = c}
           >
             <form>
               <div className="form-group">
-                <label htmlFor="message-text" className="form-control-label">Message:</label>
+                <label htmlFor="message-text" className="form-control-label">
+                  Message:
+                </label>
                 <textarea
                   className="form-control"
                   id="message-text"
@@ -118,7 +123,7 @@ const Toolbar = React.createClass({
         </div>
       </div>
     );
-  }
+  },
 });
 
 export { Toolbar as default, Toolbar };

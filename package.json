@@ -6,6 +6,7 @@
   "author"         : "Glenn Dwiyatcita (https://tiny.cc/dwiyatci)",
   "dependencies"   : {
     "bootstrap"           : "^4.0.0-alpha.2",
+    "bootstrap-table"     : "^1.10.1",
     "font-awesome"        : "^4.5.0",
     "font-awesome-webpack": "0.0.4",
     "history"             : "^2.0.0",
@@ -14,7 +15,8 @@
     "notifyjs-browser"    : "^0.4.1",
     "react"               : "^0.14.7",
     "react-dom"           : "^0.14.7",
-    "react-router"        : "^2.0.0"
+    "react-router"        : "^2.0.0",
+    "spin"                : "0.0.1"
   },
   "devDependencies": {
     "babel-loader"               : "^6.2.2",
@@ -41,6 +43,7 @@
     "webpack"      : "webpack",
     "watch"        : "webpack -w",
     "start"        : "webpack-dev-server --inline --hot",
+    "lint"         : "jscs src",
     "build"        : "npm run clean && webpack --config webpack.prod.config.js",
     "update"       : "updtr"
   },

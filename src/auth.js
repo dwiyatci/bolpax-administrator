@@ -5,7 +5,7 @@
 const auth = {
   isLoggedIn() {
     return localStorage.token;
-  }
+  },
 };
 
 export { auth as default, auth };

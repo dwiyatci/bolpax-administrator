@@ -2,22 +2,49 @@
  * Created by glenn on 17/02/16.
  */
 
-//const baseApiUrl = 'http://bolpax.mybluemix.net';
+const baseApiUrl = 'http://bolpax.mybluemix.net';
+
+//const baseApiUrl = '..';
+let apiUrls = {
+  login             : {
+    read: '/profile/dologin',
+  },
+  transactions      : {
+    read: '/trx/list',
+  },
+  transactionDetails: {
+    read: '/trx/detailcomplete',
+  },
+  issues            : {
+    read: '/issue/list',
+  },
+  issueDetails      : {
+    read: '/issue/detailcomplete',
+  },
+  refundPayments    : {
+    update: '/trx/refund',
+  },
+  replyIssues       : {
+    update: '/issue/insertTrail',
+  },
+};
+
+//const baseApiUrl = './test-data';
 //let apiUrls      = {
 //  login             : {
 //    read: '/profile/dologin',
 //  },
 //  transactions      : {
-//    read: '/trx/list',
+//    read: '/transactions.json',
 //  },
 //  transactionDetails: {
-//    read: '/trx/detailcomplete',
+//    read: '/transaction-details.json',
 //  },
 //  issues            : {
-//    read: '/issues/list',
+//    read: '/issues.json',
 //  },
 //  issueDetails      : {
-//    read: '/issue/detailcomplete',
+//    read: '/issue-details.json',
 //  },
 //  refundPayments    : {
 //    update: '/trx/transfer',
@@ -26,31 +53,6 @@
 //    update: '/issue/insertTrail',
 //  },
 //};
-
-const baseApiUrl = './test-data';
-let apiUrls      = {
-  login             : {
-    read: '/profile/dologin',
-  },
-  transactions      : {
-    read: '/transactions.json',
-  },
-  transactionDetails: {
-    read: '/transaction-details.json',
-  },
-  issues            : {
-    read: '/issues.json',
-  },
-  issueDetails      : {
-    read: '/issue-details.json',
-  },
-  refundPayments    : {
-    update: '/trx/transfer',
-  },
-  replyIssues       : {
-    update: '/issue/insertTrail',
-  },
-};
 
 apiUrls = _.mapValues(apiUrls, resource =>
   _.mapValues(resource, apiUrl => baseApiUrl + apiUrl)
@@ -71,15 +73,15 @@ const tableDescriptors = {
         'Refund Status',
       ],
       orderedColKeys: [
-        'auditTrail',
-        'id',
-        'buyerName',
-        'merchantName',
+        'lastTrxDate',
+        'trxId',
+        'buyer',
+        'merchant',
         'product',
-        'totalAmount',
-        'buyerTransactionStatus',
-        'merchantTransactionStatus',
-        'refundStatus',
+        'amount',
+        'buyerTrxStatus',
+        'merchantTrxStatus',
+        'refund',
       ],
     },
     detail: {
@@ -91,19 +93,20 @@ const tableDescriptors = {
         'Merchant Transaction Status',
       ],
       orderedColKeys: [
-        'transactionDate',
-        'buyerTransactionHistory',
-        'buyerTransactionStatus',
-        'merchantTransactionHistory',
-        'merchantTransactionStatus',
+        'trxDate',
+        'buyerTrxHistory',
+        'buyerTrxStatus',
+        'merchantTrxHistory',
+        'merchantTrxStatus',
       ],
-    }
+    },
   },
   issue      : {
     main  : {
       headerTexts   : [
         'Issue Audit Trail',
         'Transaction ID',
+        'Issue ID',
         'Buyer Name',
         'Merchant Name',
         'Reporter Role',
@@ -112,14 +115,15 @@ const tableDescriptors = {
         'User Issue History',
       ],
       orderedColKeys: [
-        'auditTrail',
-        'transactionId',
-        'buyerName',
-        'merchantName',
+        'lastIssueDate',
+        'trxId',
+        'issueId',
+        'buyer',
+        'merchant',
         'reporterRole',
-        'userIssueStatus',
-        'userIssueTitle',
-        'userIssueHistory',
+        'lastStatus',
+        'issueTitle',
+        'lastIssueHistory',
       ],
     },
     detail: {
@@ -129,12 +133,14 @@ const tableDescriptors = {
         'User Issue History',
       ],
       orderedColKeys: [
-        'issueDate',
-        'issueStatus',
-        'issueHistory',
+        'date',
+        'status',
+        'history',
       ],
-    }
+    },
   },
 };
 
-export { apiUrls, tableDescriptors };
+const pollInterval = 20000;
+
+export { apiUrls, tableDescriptors, pollInterval };

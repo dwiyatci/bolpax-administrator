@@ -12,4 +12,13 @@ const TABLE_TYPE = {
   DETAIL: 'DETAIL',
 };
 
-export { DATA_TYPE, TABLE_TYPE };
+const ISSUE_STATUS_IDS = {
+  Open                  : 1,
+  'Waiting On User'     : 2,
+  'Waiting For Feedback': 3,
+  Refund                : 4,
+  Resolved              : 5,
+  Close                 : 6,
+};
+
+export { DATA_TYPE, TABLE_TYPE, ISSUE_STATUS_IDS };

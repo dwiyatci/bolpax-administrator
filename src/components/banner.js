@@ -8,7 +8,7 @@ const Banner = React.createClass({
 
   // ask for `router` from context
   contextTypes: {
-    router: React.PropTypes.object
+    router: React.PropTypes.object,
   },
 
   handleClick() {
@@ -25,7 +25,7 @@ const Banner = React.createClass({
         <p className="lead">Transaction monitoring module solution for everyone.</p>
       </header>
     );
-  }
+  },
 });
 
 export { Banner as default, Banner };

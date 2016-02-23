@@ -1,32 +1,46 @@
 [
   {
-    "transactionId"   : "BLPX4",
-    "auditTrail"      : "2016-02-16T21:50:35.879Z",
-    "buyerName"       : "Pakle",
-    "merchantName"    : "Bloblo",
-    "reporterRole"    : "Buyer",
-    "userIssueStatus" : "Closed",
-    "userIssueTitle"  : "Item Not Delivered",
-    "userIssueHistory": "[Respond] Mohon maaf pak atas kesalahan teknis dalam pengiriman barang. Proses refund Bapak dapat dilakukan dengan melakukan tap pada button refund di atas."
+    "issueId"         : 1,
+    "trxId"           : 1,
+    "buyer"           : "Windy",
+    "merchant"        : "Warung Badu",
+    "reporterRole"    : "buyer",
+    "lastIssueDate"   : "2016-02-09 08:14:38.0",
+    "lastStatus"      : "Waiting On User",
+    "issueTitle"      : "Ga masuk masuk",
+    "lastIssueHistory": "sabar mas ini baru mau dikeluarin"
   },
   {
-    "transactionId"   : "BLPX5",
-    "auditTrail"      : "2016-02-16T21:50:35.879Z",
-    "buyerName"       : "Laipboi",
-    "merchantName"    : "Bloblo",
-    "reporterRole"    : "Buyer",
-    "userIssueStatus" : "Open",
-    "userIssueTitle"  : "Wrong Item",
-    "userIssueHistory": "Harusnya sabung batang, kenapa saya dapetnya sabun cair?"
+    "issueId"         : 2,
+    "trxId"           : 1,
+    "buyer"           : "Windy",
+    "merchant"        : "Warung Badu",
+    "reporterRole"    : "buyer",
+    "lastIssueDate"   : "2016-02-16 04:32:55.0",
+    "lastStatus"      : "Open",
+    "issueTitle"      : "test",
+    "lastIssueHistory": "test"
   },
   {
-    "transactionId"   : "BLPX6",
-    "auditTrail"      : "2016-02-16T21:50:35.879Z",
-    "buyerName"       : "Hodop",
-    "merchantName"    : "Palugada",
-    "reporterRole"    : "Merchant",
-    "userIssueStatus" : "Waiting On User",
-    "userIssueTitle"  : "Item Delay",
-    "userIssueHistory": "[Respond] Pagi, Pak! Akan kami tinjau ke pihak logistik apakah emas batang Bapak raib atau tidak."
+    "issueId"         : 3,
+    "trxId"           : 1,
+    "buyer"           : "Windy",
+    "merchant"        : "Warung Badu",
+    "reporterRole"    : "merchant",
+    "lastIssueDate"   : "2016-02-16 04:40:30.0",
+    "lastStatus"      : "Open",
+    "issueTitle"      : "barang sudah dikirim koq... mungkin di mkn tukang pos kali",
+    "lastIssueHistory": "barang sudah dikirim koq... mungkin di mkn tukang pos kali"
+  },
+  {
+    "issueId"         : 4,
+    "trxId"           : 24,
+    "buyer"           : "Bimo Sekti",
+    "merchant"        : "Sangbas Megastore",
+    "reporterRole"    : "buyer",
+    "lastIssueDate"   : "2016-02-22 08:16:07.0",
+    "lastStatus"      : "Open",
+    "issueTitle"      : "Kiriman ga sampe sampe",
+    "lastIssueHistory": "Saya tungguin barang di teras tapi malah abang bakso yang dateng"
   }
 ]
